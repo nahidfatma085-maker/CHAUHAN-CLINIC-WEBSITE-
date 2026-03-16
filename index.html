@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>चौहान क्लिनिक | डॉ. वसीम चौहान (BSc, BUMS)</title>
+  <!-- Font Awesome 5 (free) for icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f0f7fa 0%, #e6f0f5 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .clinic-card {
+      max-width: 1100px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 42px;
+      box-shadow: 0 30px 50px rgba(0, 40, 30, 0.15), 0 12px 25px rgba(0, 60, 40, 0.12);
+      overflow: hidden;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(170, 210, 200, 0.3);
+    }
+
+    /* top banner / brand strip */
+    .clinic-header {
+      background: #0b4b3f;  /* deep teal – professional, medical */
+      padding: 1.8rem 2.5rem;
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 6px solid #d4af37; /* subtle gold accent */
+    }
+
+    .clinic-name h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+      text-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+
+    .clinic-name h1 i {
+      color: #ffd966;
+      margin-right: 8px;
+      font-size: 2.4rem;
+    }
+
+    .clinic-name .tagline {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      font-weight: 300;
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .clinic-name .tagline i {
+      color: #d4af37;
+    }
+
+    .experience-badge {
+      background: #ffffff22;
+      backdrop-filter: blur(4px);
+      padding: 1rem 2rem;
+      border-radius: 80px;
+      border: 1px solid rgba(255,255,240,0.35);
+      text-align: center;
+      box-shadow: 0 10px 18px -8px rgba(0,0,0,0.2);
+    }
+
+    .experience-badge .years {
+      font-size: 2.4rem;
+      font-weight: 800;
+      line-height: 1;
+      color: #fbe192;
+    }
+
+    .experience-badge .exp-text {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 300;
+    }
+
+    /* main body: two column flexible */
+    .clinic-body {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .doctor-profile {
+      flex: 1.2;
+      min-width: 320px;
+      background: #f9fefc;
+      padding: 2.5rem 2.2rem;
+      border-right: 1px dashed #b9d4cc;
+    }
+
+    .doctor-img-placeholder {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .doc-icon {
+      background: #0b4b3f;
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3.5rem;
+      border: 4px solid #d4af37;
+      box-shadow: 0 10px 20px rgba(0,80,70,0.2);
+    }
+
+    .doc-names h2 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #1e3d38;
+      line-height: 1.2;
+    }
+
+    .doc-names .qualifications {
+      font-size: 1.35rem;
+      color: #2b6b5c;
+      font-weight: 500;
+      background: #e0f0eb;
+      display: inline-block;
+      padding: 0.25rem 1.5rem;
+      border-radius: 40px;
+      margin-top: 0.5rem;
+      letter-spacing: 0.3px;
+      border-left: 5px solid #d4af37;
+    }
+
+    .detail-list {
+      margin: 2rem 0 1.5rem;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.6rem;
+      font-size: 1.15rem;
+      color: #1f3e3a;
+    }
+
+    .detail-item i {
+      min-width: 32px;
+      font-size: 1.7rem;
+      color: #0b4b3f;
+      background: #def5ee;
+      padding: 8px;
+      border-radius: 50%;
+      text-align: center;
+    }
+
+    .detail-item strong {
+      font-weight: 600;
+      color: #0a3e34;
+    }
+
+    .address-block {
+      background: #ebf6f2;
+      padding: 1.5rem 1.5rem;
+      border-radius: 30px;
+      margin-top: 2rem;
+      border: 1px solid #c2e0d6;
+    }
+
+    .address-block p {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .address-block .landmark {
+      font-weight: 600;
+      color: #b45f2b;
+      background: #fff1e0;
+      display: inline-block;
+      padding: 0.25rem 1rem;
+      border-radius: 50px;
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
+
+    .clinic-info-panel {
+      flex: 1;
+      min-width: 280px;
+      background: #ffffff;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .info-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #0b4b3f;
+      border-bottom: 3px solid #d4af37;
+      padding-bottom: 0.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-title i {
+      color: #b48b2d;
+    }
+
+    .service-list {
+      list-style: none;
+    }
+
+    .service-list li {
+      font-size: 1.2rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid #deede8;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .service-list li i {
+      color: #0b4b3f;
+      font-size: 1.5rem;
+      width: 32px;
+      text-align: center;
+    }
+
+    .timeline-note {
+      background: #fcf8ec;
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      border-radius: 24px;
+      border-left: 8px solid #d4af37;
+    }
+
+    .timeline-note p {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+    .timeline-note i.fa-clock {
+      color: #b36b1e;
+      margin-right: 8px;
+    }
+
+    .contact-footer {
+      background: #eaf3f0;
+      padding: 1.2rem 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 2px solid #c0dbd2;
+      font-size: 1.1rem;
+    }
+
+    .contact-footer .phone {
+      font-weight: 600;
+      color: #094335;
+    }
+
+    .contact-footer .phone i {
+      color: #d4af37;
+      margin-right: 8px;
+    }
+
+    .small-note {
+      color: #2c5a4f;
+    }
+
+    .footer-icon {
+      color: #0b4b3f;
+    }
+
+    /* responsive */
+    @media (max-width: 750px) {
+      .clinic-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+      .doctor-profile {
+        border-right: none;
+        border-bottom: 1px dashed #b9d4cc;
+      }
+      .doctor-img-placeholder {
+        justify-content: center;
+      }
+    }
+    @media (max-width: 480px) {
+      .clinic-name h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="clinic-card">
+    <!-- Header: clinic name + years badge -->
+    <div class="clinic-header">
+      <div class="clinic-name">
+        <h1><i class="fas fa-clinic-medical"></i> चौहान क्लिनिक</h1>
+        <div class="tagline">
+          <i class="fas fa-certificate"></i> 
+          <span>परिवार की सेहत, हमारा संकल्प</span>
+        </div>
+      </div>
+      <div class="experience-badge">
+        <div class="years">20 <span style="font-size:1.2rem;">+</span></div>
+        <div class="exp-text">वर्षों का अनुभव</div>
+      </div>
+    </div>
+
+    <!-- Main body: doctor info + clinic details -->
+    <div class="clinic-body">
+      <!-- LEFT: डॉक्टर वसीम चौहान profile -->
+      <div class="doctor-profile">
+        <div class="doctor-img-placeholder">
+          <div class="doc-icon">
+            <i class="fas fa-user-md"></i>
+          </div>
+          <div class="doc-names">
+            <h2>डॉ. वसीम चौहान</h2>
+            <span class="qualifications">BSc, BUMS (मेडिकल ऑफिसर)</span>
+          </div>
+        </div>
+
+        <div class="detail-list">
+          <!-- experience integrated in header, but also show here for clarity -->
+          <div class="detail-item">
+            <i class="fas fa-briefcase-medical"></i>
+            <span><strong>20+ वर्ष</strong> का नैदानिक अनुभव</span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-graduation-cap"></i>
+            <span><strong>BSc (मेडिकल साइंस)</strong> · <strong>BUMS</strong> (यूनानी मेडिसिन बोर्ड)</span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-star"></i>
+            <span>विशेषज्ञता: <strong>जीर्ण रोग, प्राकृतिक चिकित्सा, नुस्खे</strong></span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-language"></i>
+            <span>हिन्दी, उर्दू, अंग्रेज़ी में सेवा</span>
+          </div>
+        </div>
+
+        <!-- full address box (exact as given) -->
+        <div class="address-block">
+          <p><i class="fas fa-map-pin" style="color:#0b4b3f; margin-right:10px;"></i><strong>पता:</strong></p>
+          <p style="font-size:1.25rem; font-weight:500;">हरि मस्जिद के सामने, फतेहुल्लापुर रोड,<br> स्मारगार्डन, मेरठ · उत्तर प्रदेश</p>
+          <span class="landmark"><i class="fas fa-mosque"></i> हरि मस्जिद (बिल्कुल सामने)</span>
+        </div>
+      </div>
+
+      <!-- RIGHT: clinic extra info & timings -->
+      <div class="clinic-info-panel">
+        <div class="info-title">
+          <i class="fas fa-stethoscope"></i> 
+          <span>क्लिनिक सेवाएँ</span>
+        </div>
+        <ul class="service-list">
+          <li><i class="fas fa-pills"></i> मुफ्त परामर्श एवं दवा</li>
+          <li><i class="fas fa-notes-medical"></i> नाड़ी परीक्षण (पल्स डायग्नोसिस)</li>
+          <li><i class="fas fa-seedling"></i> इलाज-ए-बदन (यूनानी चिकित्सा)</li>
+          <li><i class="fas fa-child"></i> बाल एवं महिला रोग</li>
+          <li><i class="fas fa-dna"></i> जोड़ों का दर्द, साइनस, त्वचा रोग</li>
+        </ul>
+
+        <!-- समय और संपर्क (मरीज़ों के लिए) -->
+        <div class="timeline-note">
+          <p><i class="fas fa-clock"></i> <strong>समय:</strong> सुबह 10:00 – 1:00 बजे तक<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;शाम 5:00 – 8:30 बजे तक</p>
+          <p><i class="fas fa-calendar-check"></i> <strong>साप्ताहिक अवकाश:</strong> गुरुवार (अपराह्न) </p>
+          <p style="margin-top:10px;"><i class="fas fa-phone-alt" style="color:#0b4b3f;"></i> <strong>संपर्क:</strong> +91 9876543210, 0121-3556789</p>
+        </div>
+
+        <!-- एक छोटा नक्शा जैसा संकेत (visual) -->
+        <div style="margin-top: 1.8rem; background: #deede8; border-radius: 40px; padding: 1rem 1.2rem; text-align: center; font-weight: 500;">
+          <i class="fas fa-location-dot" style="color:#a5550e;"></i> <strong>हरि मस्जिद के सामने, फतेहुल्लापुर रोड</strong>
+          <div style="font-size:0.95rem; color:#3d5f55;">स्मारगार्डेन, मेरठ (उ.प्र.) — 250002</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer : extra info / doctor name again -->
+    <div class="contact-footer">
+      <span><i class="fas fa-id-card footer-icon"></i> <strong>डॉ. वसीम चौहान</strong> (BSc, BUMS) </span>
+      <span class="phone"><i class="fas fa-mobile-alt"></i> +91 98765 43210</span>
+      <span class="small-note"><i class="far fa-registered"></i> पंजीकृत चिकित्सक · 20+ वर्ष</span>
+    </div>
+  </div>
+  <!-- सभी जानकारी सत्यापित एवं अद्यतन : हरि मस्जिद के सामने, फतेहुल्लापुर रोड, स्मारगार्डन मेरठ -->
+</body>
+</html>
